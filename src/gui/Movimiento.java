@@ -173,4 +173,4 @@ public abstract class Movimiento extends javax.swing.JPanel {
     
     abstract void marcar();
     
-}
+} 

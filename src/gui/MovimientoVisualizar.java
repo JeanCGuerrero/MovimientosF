@@ -18,18 +18,18 @@ import java.util.logging.Logger;
  */
 public class MovimientoVisualizar extends Movimiento {
     
-    final MovimientoClass tareaClass;
+    final MovimientoClass movimientoClass;
     
-    public MovimientoVisualizar(MovimientoClass tareaClass){
-        this.tareaClass = tareaClass;
+    public MovimientoVisualizar(MovimientoClass movimientoClass){
+        this.movimientoClass = movimientoClass;
         conceptoText.setEditable(false);
-        conceptoText.setText(tareaClass.concepto);                
+        conceptoText.setText(movimientoClass.concepto);                
         fechaSpinner.setEnabled(false);
-        fechaSpinner.setValue(new Date(tareaClass.fecha));
+        fechaSpinner.setValue(new Date(movimientoClass.fecha));
         montoText.setEditable(false);
-        montoText.setText(tareaClass.monto);  
+        montoText.setText(movimientoClass.monto);  
         descripcionText.setEditable(false);
-        descripcionText.setText(tareaClass.descripcion);
+        descripcionText.setText(movimientoClass.descripcion);
         eliminarButton.setVisible(true);
         historiallButton.setVisible(true);
     }
@@ -37,7 +37,7 @@ public class MovimientoVisualizar extends Movimiento {
     @Override
     void eliminar() {
         try {
-            MovimientoAcciones.eliminarTarea(tareaClass);
+            MovimientoAcciones.eliminarTarea(movimientoClass);
             movimientos.movimientos.principal.eliminarTarea(this);
         } catch (SQLException ex) {
             Logger.getLogger(MovimientoVisualizar.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,12 +47,12 @@ public class MovimientoVisualizar extends Movimiento {
     @Override
     void marcar() {
         try {
-            MovimientoAcciones.finalizarTarea(tareaClass);
+            MovimientoAcciones.finalizarTarea(movimientoClass);
             movimientos.movimientos.principal.eliminarTarea(this);
         } catch (SQLException ex) {
             Logger.getLogger(MovimientoVisualizar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
   
-}
+} 
  

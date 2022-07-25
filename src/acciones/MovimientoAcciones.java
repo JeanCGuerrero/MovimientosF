@@ -110,5 +110,5 @@ public class MovimientoAcciones {
         PreparedStatement ps = Conexion.PepareStatement(sql);
         ps.setLong(1, movimientoClass.getID());
         ps.execute();
-    }
+    } 
 }

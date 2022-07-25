@@ -22,7 +22,7 @@ public class Historial extends javax.swing.JFrame {
       
     public static Historial obtenInstancia(){
         if(historial==null)
-            historial=new Historial();
+        historial = new Historial();
         historial.setSize(800, 500);
         return historial;
     }
@@ -106,13 +106,13 @@ public class Historial extends javax.swing.JFrame {
 
     private void cargarTareas() {
         try {
-            ArrayList<MovimientoClass> tareas = MovimientoAcciones.obtenerTareasHistoricas();            
+            ArrayList<MovimientoClass> movimientos = MovimientoAcciones.obtenerTareasHistoricas();            
             tareasList.clear();
             tareasPanel.removeAll();
-            for(MovimientoClass tarea : tareas){
-                MovimientoHistorial tareaHistorial = new MovimientoHistorial(tarea);
-                tareasList.add(tareaHistorial);                
-                tareasPanel.add(tareaHistorial);
+            for(MovimientoClass tarea : movimientos){
+                MovimientoHistorial movimientoHistorial = new MovimientoHistorial(tarea);
+                tareasList.add(movimientoHistorial);                
+                tareasPanel.add(movimientoHistorial);
             }
             validate();
         } catch (SQLException ex) {
@@ -120,9 +120,9 @@ public class Historial extends javax.swing.JFrame {
         }
     }    
     
-      void eliminarTarea(MovimientoHistorial tarea) { 
-        tareasList.remove(tarea);
-        tareasPanel.remove(tarea);
+      void eliminarTarea(MovimientoHistorial movimientoHistorial) { 
+        tareasList.remove(movimientoHistorial);
+        tareasPanel.remove(movimientoHistorial);
         validate();
     }
 
@@ -132,4 +132,4 @@ public class Historial extends javax.swing.JFrame {
         requestFocus();
     }
         
-    }
+ }

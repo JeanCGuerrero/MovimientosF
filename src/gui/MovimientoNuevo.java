@@ -16,7 +16,7 @@ public class MovimientoNuevo extends Movimiento {
     
     public MovimientoNuevo(){
         conceptoText.setEnabled(true);
-        conceptoText.setText("(Solo la palabra ingreso o egreso)");                
+        conceptoText.setText("");                
         fechaSpinner.setEnabled(true);
         montoText.setEnabled(true);
         montoText.setText("");
@@ -28,12 +28,11 @@ public class MovimientoNuevo extends Movimiento {
     
     MovimientoClass getTareaClass(){
         Date fecha = (Date) fechaSpinner.getValue();
-        String concepto =  conceptoText.getText();    
-        //int monto = Integer.parseInt(montoText.getText()); *********PARSE***************
+        String concepto =  conceptoText.getText();            
         String monto =  montoText.getText();
         String descripcion =  descripcionText.getText();            
-        MovimientoClass tareaClass = new MovimientoClass(concepto, fecha.getTime(),  monto, descripcion);
-        return tareaClass;
+        MovimientoClass movimientoClass = new MovimientoClass(concepto, fecha.getTime(),  monto, descripcion);
+        return movimientoClass;
     }   
 
     @Override
@@ -45,4 +44,4 @@ public class MovimientoNuevo extends Movimiento {
     void marcar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
+} 

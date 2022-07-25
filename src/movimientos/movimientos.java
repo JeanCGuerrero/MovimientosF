@@ -12,8 +12,7 @@ import gui.*;
  */
 public class movimientos {
 
-    public static Principal principal;
-    public static Historial historial; ////************
+    public static Principal principal;   
     
     /**
      * @param args the command line arguments
@@ -24,4 +23,4 @@ public class movimientos {
         principal.setSize(640, 450);
         principal.requestFocus();       
     }    
-}
+} 

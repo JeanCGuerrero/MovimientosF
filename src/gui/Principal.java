@@ -20,7 +20,7 @@ public class Principal extends javax.swing.JFrame {
     
     
     
-    ArrayList <MovimientoVisualizar> tareasList = new ArrayList<>(); 
+    ArrayList <MovimientoVisualizar> movimientoList = new ArrayList<>(); 
   
     public Principal() {
         initComponents();
@@ -40,7 +40,6 @@ public class Principal extends javax.swing.JFrame {
         consultarButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tareasPanel = new javax.swing.JPanel();
-        historialButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tareas_pendientes");
@@ -66,32 +65,22 @@ public class Principal extends javax.swing.JFrame {
                 gestionButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(gestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 92, -1, 50));
+        getContentPane().add(gestionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, 50));
 
         consultarButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         consultarButton.setIcon(new javax.swing.ImageIcon("F:\\Programas\\SQLITE\\MovimientosF\\Imagenes\\descarga (2).png")); // NOI18N
-        consultarButton.setText("Consultar balance");
+        consultarButton.setText("Consultar movimientos");
         consultarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(consultarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 184, 209, 50));
+        getContentPane().add(consultarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 209, 50));
 
         tareasPanel.setLayout(new javax.swing.BoxLayout(tareasPanel, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane2.setViewportView(tareasPanel);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 73, 365, 284));
-
-        historialButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        historialButton1.setIcon(new javax.swing.ImageIcon("F:\\Programas\\SQLITE\\MovimientosF\\Imagenes\\descarga.png")); // NOI18N
-        historialButton1.setText("Estado de mis finanzas");
-        historialButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historialButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(historialButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 210, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,10 +97,6 @@ public class Principal extends javax.swing.JFrame {
         cargarTareas();
     }//GEN-LAST:event_formWindowOpened
 
-    private void historialButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_historialButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -120,15 +105,14 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultarButton;
     private javax.swing.JButton gestionButton;
-    private javax.swing.JButton historialButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel tareasPanel;
     // End of variables declaration//GEN-END:variables
 
-    void agregarTarea(MovimientoClass tareaClass) {
-        MovimientoVisualizar tareaVisualizar = new MovimientoVisualizar(tareaClass);
-        tareasList.add(tareaVisualizar);
+    void agregarTarea(MovimientoClass movimientoClass) {
+        MovimientoVisualizar tareaVisualizar = new MovimientoVisualizar(movimientoClass);
+        movimientoList.add(tareaVisualizar);
         tareasPanel.add(tareaVisualizar);
         validate();
         requestFocus();
@@ -137,12 +121,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void cargarTareas() {
         try {
-            ArrayList<MovimientoClass> tareas = MovimientoAcciones.obtenerTareas();
-            tareasList.clear();
+            ArrayList<MovimientoClass> movimientos = MovimientoAcciones.obtenerTareas();
+            movimientoList.clear();
             tareasPanel.removeAll();
-            for(MovimientoClass tarea : tareas){
-                MovimientoVisualizar tareaVisualizar = new MovimientoVisualizar(tarea);
-                tareasList.add(tareaVisualizar);
+            for(MovimientoClass movimiento : movimientos){
+                MovimientoVisualizar tareaVisualizar = new MovimientoVisualizar(movimiento);
+                movimientoList.add(tareaVisualizar);
                 tareasPanel.add(tareaVisualizar);
             }
             validate();
@@ -151,9 +135,9 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
-    void eliminarTarea(MovimientoVisualizar tarea) {
-        tareasList.remove(tarea);
-        tareasPanel.remove(tarea);
+    void eliminarTarea(MovimientoVisualizar movimientoVisualizar) {
+        movimientoList.remove(movimientoVisualizar);
+        tareasPanel.remove(movimientoVisualizar);
         validate();
     }
-}
+} 

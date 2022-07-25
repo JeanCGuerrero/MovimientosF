@@ -18,21 +18,21 @@ import java.util.logging.Logger;
  */
 public class MovimientoHistorial extends Movimiento {
     
-    final MovimientoClass tareaClass;
+    final MovimientoClass movimientoClass;
     
-    public MovimientoHistorial(MovimientoClass tareaClass){
-        this.tareaClass = tareaClass;
+    public MovimientoHistorial(MovimientoClass movimientoClass){
+        this.movimientoClass = movimientoClass;
         conceptoText.setEditable(false);
-        conceptoText.setText(tareaClass.concepto);                
+        conceptoText.setText(movimientoClass.concepto);                
         fechaSpinner.setEnabled(false);
-        fechaSpinner.setValue(new Date(tareaClass.fecha));
+        fechaSpinner.setValue(new Date(movimientoClass.fecha));
         montoText.setEnabled(false); 
-        montoText.setText(tareaClass.monto);        
+        montoText.setText(movimientoClass.monto);        
         descripcionText.setEnabled(false);       
-        descripcionText.setText(tareaClass.descripcion);       
+        descripcionText.setText(movimientoClass.descripcion);       
         eliminarButton.setVisible(false);        
-        historiallButton.setVisible(true); //**********BORRAR**********////////////
-        historiallButton.setText("Reactivar"); //**********BORRAR**********////////////
+        historiallButton.setVisible(true);
+        historiallButton.setText("Excluir del Historial");
      }
 
     @Override
@@ -43,14 +43,14 @@ public class MovimientoHistorial extends Movimiento {
     @Override
     void marcar() {
          try {
-            MovimientoAcciones.reactivarTarea(tareaClass);
+            MovimientoAcciones.reactivarTarea(movimientoClass);
             Historial.obtenInstancia().eliminarTarea(this);
-            movimientos.movimientos.principal.agregarTarea(tareaClass);
+            movimientos.movimientos.principal.agregarTarea(movimientoClass);
         } catch (SQLException ex) {
             Logger.getLogger(MovimientoHistorial.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    }
+}
 
 

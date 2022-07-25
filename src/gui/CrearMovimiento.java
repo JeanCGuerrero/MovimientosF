@@ -17,14 +17,14 @@ import java.util.logging.Logger;
  */
 public class CrearMovimiento extends javax.swing.JFrame {
      static void mostrar(){
-            CrearMovimiento crearTarea = new CrearMovimiento();
-            crearTarea.cargarWidget();
-            crearTarea.setSize(640, 450);
-            crearTarea.setVisible(true);
-            crearTarea.requestFocus();            
+            CrearMovimiento crearMovimiento = new CrearMovimiento();
+            crearMovimiento.cargarWidget();
+            crearMovimiento.setSize(640, 450);
+            crearMovimiento.setVisible(true);
+            crearMovimiento.requestFocus();            
         }
 
-        MovimientoNuevo tareaNueva;
+        MovimientoNuevo movimientoNuevo;
         
     private CrearMovimiento() {
         initComponents();
@@ -128,10 +128,10 @@ public class CrearMovimiento extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void guardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarButtonActionPerformed
-        MovimientoClass tareaClass = tareaNueva.getTareaClass();        
+        MovimientoClass movimientoClass = movimientoNuevo.getTareaClass();        
          try {
-             MovimientoAcciones.guardarTarea(tareaClass);
-             movimientos.movimientos.principal.agregarTarea(tareaClass);
+             MovimientoAcciones.guardarTarea(movimientoClass);
+             movimientos.movimientos.principal.agregarTarea(movimientoClass);
              dispose();
          } catch (SQLException ex) {
              Logger.getLogger(CrearMovimiento.class.getName()).log(Level.SEVERE, null, ex);
@@ -155,12 +155,12 @@ public class CrearMovimiento extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
   
     private void cargarWidget() {
-        tareaNueva = new MovimientoNuevo();
-        tareaNueva.setSize(500, 400);
-        tareaNueva.setVisible(true);
+        movimientoNuevo = new MovimientoNuevo();
+        movimientoNuevo.setSize(500, 400);
+        movimientoNuevo.setVisible(true);
         tareaPanel.removeAll();
-        tareaPanel.add(tareaNueva);
+        tareaPanel.add(movimientoNuevo);
         validate();
     }
-}
+} 
 

@@ -36,7 +36,7 @@ public class MovimientoClass {
 }
     public long getID(){
     return movimientoID;
-}
+} 
     
     
 }
